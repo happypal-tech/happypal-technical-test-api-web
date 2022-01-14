@@ -8,7 +8,7 @@ Contacts :
 
 Ce test a pour but de tester différents aspects que vous serez amené à rencontrer tous les jours au sein d'Happypal. Vous avez carte blanche quant à ce sur quoi vous décidez d'avancer ainsi que sur le détails d'implémentation.
 
-Ici nous testons votre capacité à vous projeter et à être force de proposition ainsi que votre structure de code mais également comment vous interagissez avec l'équipe (dans le cas où nous posez des questions en entretiens ou par mail pendant ce test).
+Ici nous testons votre capacité à vous projeter et à être force de proposition ainsi que votre structure de code mais également comment vous interagissez avec l'équipe (dans le cas où posez des questions en entretiens ou par mail pendant ce test).
 
 Vous êtes grandement encouragé à sortir des cases et à nous proposer ce que VOUS pensez être intéressant.
 
@@ -29,7 +29,7 @@ Vous pouvez tout modifier, vous pouvez également consommer une autre API si l'e
 
 ## Évaluation :
 
-Il n'y aucun critère de notation, aucun barème. Votre travail sera évalué lors d'un entretien en visio afin que vous puissiez le défendre et qu l'on puisse challenger le livrable.
+Il n'y aucun critère de notation, aucun barème. Votre travail sera évalué lors d'un entretien en visio afin que vous puissiez le défendre et que l'on puisse challenger le livrable.
 
 Que vous fassiez uniquement de l'intégration ou alors que vous rajoutiez des fonctionnalités liées au serveur, tout est bon à prendre. Une méthode n'est pas meilleure que l'autre, vous êtes aux commandes, amusez-vous et bluffez nous !
 
@@ -54,9 +54,9 @@ Ne faites pas tout, il ne s'agit que d'idées si vous n'en avez pas ! ;)
 - Implémenter les images sur la page produit
 - Styliser la page produits
 - Styliser la page produit
-- Implémenter un loader (skeleton ?)
+- Implémenter un état de chargement (spinner ou skeleton ou autre)
 - Implémenter une page d'erreur (404)
-- Implémenter un bouton de déconnection
+- Implémenter un bouton de déconnexon
 - Styliser la modale de login
 
 ## Détails techniques
