@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@graphql/*": ["./graphql/*"],
+      "@utils/*": ["./utils/*"],
+      "@services/*": ["./services/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@components/*": ["./components/*"],
+      "@atoms/*": ["./components/atoms/*"],
+      "@molecules/*": ["./components/molecules/*"],
+      "@organisms/*": ["./components/organisms/*"],
+      "@forms/*": ["./components/forms/*"],
+      "@tables/*": ["./components/tables/*"],
+      "@modals/*": ["./components/modals/*"],
+      "@views/*": ["./components/views/*"]
+    }
+  }
+}
