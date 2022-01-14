@@ -61,6 +61,14 @@ Ne faites pas tout, il ne s'agit que d'idées si vous n'en avez pas ! ;)
 
 ## Détails techniques
 
+### Identifiants utilisateurs
+
+Ces identifiants ne sont pas nécessaires, mais peuvent vous être utiles :
+
+- user1@test.com : password
+- user2@test.com : password
+- user3@test.com : password
+
 ### Génération d'une requête GraphQL
 
 [Apollo Client](https://www.apollographql.com/docs/react/)
