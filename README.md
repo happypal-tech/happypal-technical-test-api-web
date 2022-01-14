@@ -54,7 +54,7 @@ Ne faites pas tout, il ne s'agit que d'idées si vous n'en avez pas ! ;)
 - Implémenter les images sur la page produit
 - Styliser la page produits
 - Styliser la page produit
-- Implémenter un loader (skeletton ?)
+- Implémenter un loader (skeleton ?)
 - Implémenter une page d'erreur (404)
 - Implémenter un bouton de déconnection
 - Styliser la modale de login
