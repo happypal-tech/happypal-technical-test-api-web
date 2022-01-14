@@ -66,6 +66,8 @@ Ne faites pas tout, il ne s'agit que d'idées si vous n'en avez pas ! ;)
 [Apollo Client](https://www.apollographql.com/docs/react/)
 [GraphQL Codegen](https://www.graphql-code-generator.com/)
 
+Lien du playground où faire vos tests GraphQL: https://happypal-technical-test-api.herokuapp.com/graphql
+
 Si vous souhaitez modifier une query, mutation ou fragment GraphQL, après avoir fait votre modification dans le fichier `.gql` correspondant, lancez la commande `yarn run gen:gql`. Celle-ci va convertir vos fichier en `.generated.ts`. Ces fichiers contiennent les définitions typescript automatiquement générées depuis le serveur.
 
 Exemple de création d'une requête pour récupérer un utilisateur :
