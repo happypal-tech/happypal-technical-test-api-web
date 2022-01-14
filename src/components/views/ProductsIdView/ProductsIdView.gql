@@ -1,0 +1,16 @@
+query ProductsIdView($productId: ID!) {
+  product(productId: $productId) {
+    id
+    name
+    description
+    pictures {
+      id
+      hash # https://blurha.sh/
+      height
+      width
+      originalName
+      size
+      url
+    }
+  }
+}

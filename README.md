@@ -1,46 +1,119 @@
-# Getting Started with Create React App
+# Test Technique Happypal Front
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Contacts :
+- Lancelot Prigent <lancelot@happypal.fr>
+- Wassim Samad <wassim@happypal.fr>
 
-## Available Scripts
+## Préambule :
 
-In the project directory, you can run:
+Ce test a pour but de tester différents aspects que vous serez amené à rencontrer tous les jours au sein d'Happypal. Vous avez carte blanche quant à ce sur quoi vous décidez d'avancer ainsi que sur le détails d'implémentation.
 
-### `yarn start`
+Ici nous testons votre capacité à vous projeter et à être force de proposition ainsi que votre structure de code mais également comment vous interagissez avec l'équipe (dans le cas où nous posez des questions en entretiens ou par mail pendant ce test).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Vous êtes grandement encouragé à sortir des cases et à nous proposer ce que VOUS pensez être intéressant.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+L'application mise à votre disposition est une coquille reprenant :
+- Une Application React Typescript
+- Une connexion à une API GraphQL
+- Un système de login
+- 2 pages déjà liées pour vous permettre de ne pas faire de GraphQL si vous ne le souhaitez pas
+- Le typage généré automatiquement par rapport aux models serveurs
 
-### `yarn test`
+## Consignes :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Carte blanche, faites ce que souhaitez, notez le temps que vous passer pour faire les choses et n'y passez pas trop de temps, il ne s'agit que d'un test technique, libre à vous d'estimer ce que vous souhaitez injecter comme temps dedans.
 
-### `yarn build`
+A moins que vous trouviez ça amusant ne passer pas plus de 8h grand maximum sur le projet, il a été conçu pour convenir à tous type de profil, n'essayez pas de tout faire au risque de vous démotiver.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Vous pouvez tout modifier, vous pouvez également consommer une autre API si l'envie vous prend.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Évaluation :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Il n'y aucun critère de notation, aucun barème. Votre travail sera évalué lors d'un entretien en visio afin que vous puissiez le défendre et qu l'on puisse challenger le livrable.
 
-### `yarn eject`
+Que vous fassiez uniquement de l'intégration ou alors que vous rajoutiez des fonctionnalités liées au serveur, tout est bon à prendre. Une méthode n'est pas meilleure que l'autre, vous êtes aux commandes, amusez-vous et bluffez nous !
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contraintes de rendu
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Ce répo est à votre disposition sur Github, votre livrable devra être un fork de celui-ci que vous nous communiquerez par mail.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Idées de fonctionnalités
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Ne faites pas tout, il ne s'agit que d'idées si vous n'en avez pas ! ;)
 
-## Learn More
+### GraphQL
+- Afficher sur la page produit, les autre produits vendu par le même vendeur
+- Implémenter une pagination sur la page produits
+- Implémenter une recherche sur le nom des produit
+- Implémenter un filtre sur le prix des produits (min et max)
+- Implémenter un tri sur date de création ou date de mise à jour
+- Implémenter les images sur les cartes produits
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Front uniquement
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Implémenter les images sur la page produit
+- Styliser la page produits
+- Styliser la page produit
+- Implémenter un loader (skeletton ?)
+- Implémenter une page d'erreur (404)
+- Implémenter un bouton de déconnection
+- Styliser la modale de login
+
+## Détails techniques
+
+### Génération d'une requête GraphQL
+
+[Apollo Client](https://www.apollographql.com/docs/react/)
+[GraphQL Codegen](https://www.graphql-code-generator.com/)
+
+Si vous souhaitez modifier une query, mutation ou fragment GraphQL, après avoir fait votre modification dans le fichier `.gql` correspondant, lancez la commande `yarn run gen:gql`. Celle-ci va convertir vos fichier en `.generated.ts`. Ces fichiers contiennent les définitions typescript automatiquement générées depuis le serveur.
+
+Exemple de création d'une requête pour récupérer un utilisateur :
+
+1. Création du fichier graphql
+
+```graphql
+# UsersIdsView.gql
+query UsersIdView($userId: ID!) {
+  user(userId: $userId) {
+    id
+    firstName
+    lastName
+  }
+}
+```
+
+2. Génération du fichier `.generated.ts` à l'aide de `yarn run gen:gql`
+
+3. Import de la query dans la page
+
+```ts
+// UsersIdView.tsx
+import { useUsersIdViewQuery } from './UsersIdView.generated';
+
+export type UsersIdViewProps = {
+  userId: string;
+}
+
+export function UsersIdView(props: UserIdViewProps) {
+  const { userId } = props;
+
+  const { data, loading } = useUsersIdViewQuery({ variables: { userId } });
+
+  const user = data?.user;
+
+  if (loading) {
+    return <div>Chargement</div>;
+  } else if (!user) {
+    return <div>Erreur</div>;
+  }
+
+  return (
+    <div>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+    </div>
+  );
+}
+```
+
+4. Votre query est fonctionnelle.

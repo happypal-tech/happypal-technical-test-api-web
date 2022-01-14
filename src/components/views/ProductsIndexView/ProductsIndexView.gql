@@ -1,0 +1,15 @@
+query ProductsIndexView(
+  $skip: Int!
+  $take: Int!
+) {
+  productsPagination(
+    skip: $skip
+    take: $take
+  ) {
+    totalCount
+    nodes {
+      id
+      ...ProductCard
+    }
+  }
+}

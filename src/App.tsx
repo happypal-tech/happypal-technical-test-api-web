@@ -1,19 +1,23 @@
-import './App.css';
+import { Route, Routes } from 'react-router';
 
-import logo from './logo.svg';
+import { AppLayout } from '@components/organisms/AppLayout/AppLayout';
+import { IndexView } from '@components/views/IndexView/IndexView';
+import { ProductsIdView } from '@components/views/ProductsIdView/ProductsIdView';
+import { ProductsIndexView } from '@components/views/ProductsIndexView/ProductsIndexView';
+import { ProductsView } from '@components/views/ProductsView/ProductsView';
 
 export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<IndexView />} />
+          <Route path="products" element={<ProductsView />}>
+            <Route path=":productId" element={<ProductsIdView />} />
+            <Route index element={<ProductsIndexView />} />
+          </Route>
+        </Route>
+      </Routes>
     </div>
   );
 }

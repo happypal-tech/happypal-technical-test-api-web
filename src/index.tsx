@@ -7,6 +7,8 @@ import { apolloClient } from '@graphql/client';
 
 import { AuthProvider } from '@hooks/auth/auth.hooks';
 
+import './index.scss';
+
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -20,7 +22,7 @@ ReactDOM.render(
       </ApolloProvider>
     </Router>
   </StrictMode>,
-  document.getElementById('root'),
+  document.getElementById('app-root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

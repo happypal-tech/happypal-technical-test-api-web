@@ -1,0 +1,4 @@
+fragment AppHeaderProfile on User {
+  id
+  email
+}

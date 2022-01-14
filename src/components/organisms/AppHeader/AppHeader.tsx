@@ -1,9 +1,16 @@
+import style from './AppHeader.module.scss';
+
 import { useAppHeaderQuery } from './AppHeader.generated';
+import { AppHeaderLogin } from './components/AppHeaderLogin/AppHeaderLogin';
+import { AppHeaderProfile } from './components/AppHeaderProfile/AppHeaderProfile';
 
-export type AppHeaderProps = {};
+export function AppHeader() {
+  const { data } = useAppHeaderQuery();
 
-export function AppHeader(props: AppHeaderProps) {
-  const { data, loading } = useAppHeaderQuery();
-
-  return <div>AppHeader</div>;
+  return (
+    <div className={style.root}>
+      <div>HappyClone</div>
+      {data?.viewer ? <AppHeaderProfile viewer={data.viewer} /> : <AppHeaderLogin />}
+    </div>
+  );
 }
