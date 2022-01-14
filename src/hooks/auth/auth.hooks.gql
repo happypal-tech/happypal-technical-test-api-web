@@ -1,0 +1,11 @@
+query AuthHookViewer {
+  viewer {
+    id
+    ...AuthHook
+  }
+}
+
+fragment AuthHook on User {
+  id
+  email
+}

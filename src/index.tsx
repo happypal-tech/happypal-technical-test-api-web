@@ -1,15 +1,25 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
 
-import './index.css';
+import { apolloClient } from '@graphql/client';
 
-import App from './App';
+import { AuthProvider } from '@hooks/auth/auth.hooks';
+
+import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <StrictMode>
+    <Router>
+      <ApolloProvider client={apolloClient}>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ApolloProvider>
+    </Router>
+  </StrictMode>,
   document.getElementById('root'),
 );
 
