@@ -5,14 +5,14 @@
 }
 
 .content {
-  margin-top: 4px;
+  margin-top: var(--space-xs);
 }
 
 .help {
-  margin-top: 4px;
+  margin-top: var(--space-xs);
 }
 
 .error {
-  margin-top: 4px;
+  margin-top: var(--space-xs);
   color: red;
 }

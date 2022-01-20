@@ -1,5 +1,9 @@
 import { Navigate, useParams } from 'react-router';
 
+import { Loader } from '@molecules/Loader/Loader';
+
+import styles from '@views/ProductsIndexView/ProductsIndexView.module.scss';
+
 import { useProductsIdViewQuery } from './ProductsIdView.generated';
 
 export function ProductsIdView() {
@@ -14,8 +18,11 @@ export function ProductsIdView() {
   const product = data?.product;
 
   if (loading) {
-    // TODO: Implement a nice loader ?
-    return <div>Chargement</div>;
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader />
+      </div>
+    );
   } else if (!product) {
     // TODO: Implement a nice error screen ?
     return <div>Erreur</div>;

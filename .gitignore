@@ -24,3 +24,6 @@ yarn-error.log*
 
 src/**/*.generated.ts
 src/graphql/generated/*
+
+# phpStorm
+.idea
