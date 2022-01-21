@@ -15,7 +15,24 @@ export function ProductCard(props: ProductCardProps) {
 
   return (
     <Link to={`/products/${product.id}`} className={classNames(styles.root, className)}>
-      {product.name}
+      <div>
+        {product.pictures.length > 0 ? (
+          <div className={classNames(styles.picture)}>
+            <picture>
+              <img
+                src={product.pictures[0].url}
+                alt={product.pictures[0].originalName ? product.pictures[0].originalName : ''}
+              />
+            </picture>
+          </div>
+        ) : (
+          <div className={classNames(styles.noPhoto)}>
+            <p>no photo</p>
+          </div>
+        )}
+
+        <p>{product.name}</p>
+      </div>
     </Link>
   );
 }

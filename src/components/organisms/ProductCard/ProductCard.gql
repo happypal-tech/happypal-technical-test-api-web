@@ -3,4 +3,11 @@ fragment ProductCard on Product {
   name
   priceValue
   priceCurrency
+  pictures {
+    height
+    width
+    originalName
+    size
+    url
+  }
 }

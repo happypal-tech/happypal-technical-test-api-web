@@ -14,6 +14,13 @@ query ProductsIndexView(
     }
     nodes {
       id
+      pictures {
+        height
+        width
+        originalName
+        size
+        url
+      }
       ...ProductCard
     }
   }
