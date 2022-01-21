@@ -18,20 +18,8 @@ export function ProductsIndexView() {
     },
   });
 
-  const pageCount: number | null = data ? Math.ceil(data.productsPagination.totalCount / productPerPage) : null;
-  const isLastPage = pageCount !== null && pageCount === currentPage + 1;
-
-  const nextPage = (): void => {
-    if (!isLastPage) {
-      setPage(currentPage + 1);
-    }
-  };
-
-  const prevPage = (): void => {
-    if (currentPage > 0) {
-      setPage(currentPage - 1);
-    }
-  };
+  // TODO => renvoie toujours true si il y a des data. Erreur API ?
+  console.log(data?.productsPagination.pageInfo.hasPreviousPage);
 
   if (loading) {
     return (
@@ -52,13 +40,17 @@ export function ProductsIndexView() {
         ))}
       </div>
       <div className={styles.paginationContainer}>
-        <button className={styles.paginationButton} onClick={prevPage} disabled={currentPage < 1}>
+        <button className={styles.paginationButton} onClick={() => setPage(currentPage - 1)} disabled={currentPage < 1}>
           Prev.
         </button>
         <span>
-          {currentPage + 1} / {pageCount}
+          {currentPage + 1} / {data.productsPagination.pageInfo.pageCount}
         </span>
-        <button className={styles.paginationButton} onClick={nextPage} disabled={isLastPage}>
+        <button
+          className={styles.paginationButton}
+          onClick={() => setPage(currentPage + 1)}
+          disabled={!data.productsPagination.pageInfo.hasNextPage}
+        >
           Next
         </button>
       </div>
