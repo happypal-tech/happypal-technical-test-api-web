@@ -19,6 +19,18 @@ L'application mise à votre disposition est une coquille reprenant :
 - 2 pages déjà liées pour vous permettre de ne pas faire de GraphQL si vous ne le souhaitez pas
 - Le typage généré automatiquement par rapport aux models serveurs
 
+## Installation
+
+Pour initialiser l'environnement de travail lancer :
+
+```sh
+yarn install
+
+yarn run gen:gql
+
+yarn start
+```
+
 ## Consignes :
 
 Carte blanche, faites ce que souhaitez, notez le temps que vous passer pour faire les choses et n'y passez pas trop de temps, il ne s'agit que d'un test technique, libre à vous d'estimer ce que vous souhaitez injecter comme temps dedans.
