@@ -7,9 +7,12 @@ query ProductsIdView($productId: ID!) {
     priceValue
     pictures {
       id
+      createdAt
+      updatedAt
       hash # https://blurha.sh/
       height
       width
+      mimetype
       originalName
       size
       url

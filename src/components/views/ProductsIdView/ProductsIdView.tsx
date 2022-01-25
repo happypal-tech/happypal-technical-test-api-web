@@ -1,5 +1,6 @@
 import { Navigate, useParams } from 'react-router';
 
+import { CarouselPictures } from '@molecules/CarouselPictures/CarouselPictures';
 import { OwnedProducts } from '@organisms/OwnedProducts/OwnedProducts';
 
 import { useProductsIdViewQuery } from './ProductsIdView.generated';
@@ -25,13 +26,24 @@ export function ProductsIdView() {
 
   return (
     <div>
-      <pre>{JSON.stringify(product, null, 2)}</pre>
+      <section>
+        {!!product.pictures.length && <CarouselPictures pictures={product.pictures} productName={product.name} />}
+        <h1>{product.name}</h1>
+        <div>
+          {/* TODO: Implement a seller page with contact */}
+          Vendeur : {product.owner.firstName} {product.owner.lastName}
+        </div>
+        <div>
+          {product.priceValue} {product.priceCurrency}
+        </div>
+        <div>{product.description}</div>
+      </section>
       <section>
         <h2>Du même vendeur</h2>
         {product.owner.ownedProductsPagination.nodes
           .filter((node) => node.id !== product.id)
           .map((node) => (
-            <OwnedProducts product={node} key={node.id} />
+            <OwnedProducts product={node} key={`node_${node.id}`} />
           ))}
       </section>
     </div>

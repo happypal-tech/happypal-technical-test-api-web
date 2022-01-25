@@ -15,7 +15,14 @@ export function OwnedProducts(props: OwnedProductsProps) {
       {!!product.pictures.length && (
         <div>
           {product.pictures.slice(0, 1).map((picture) => {
-            return <img src={picture.url} alt={picture.originalName ?? product.name} key={product.id} width="150px" />;
+            return (
+              <img
+                src={picture.url}
+                alt={picture.originalName ?? product.name}
+                key={`product_${product.id}`}
+                width="150px"
+              />
+            );
           })}
         </div>
       )}
