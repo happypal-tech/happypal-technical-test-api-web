@@ -3,4 +3,13 @@ fragment ProductCard on Product {
   name
   priceValue
   priceCurrency
+  pictures {
+    id
+    hash # https://blurha.sh/
+    height
+    width
+    originalName
+    size
+    url
+  }
 }

@@ -1,5 +1,7 @@
 import { Navigate, useParams } from 'react-router';
 
+import { OwnedProducts } from '@organisms/OwnedProducts/OwnedProducts';
+
 import { useProductsIdViewQuery } from './ProductsIdView.generated';
 
 export function ProductsIdView() {
@@ -24,6 +26,14 @@ export function ProductsIdView() {
   return (
     <div>
       <pre>{JSON.stringify(product, null, 2)}</pre>
+      <section>
+        <h2>Du même vendeur</h2>
+        {product.owner.ownedProductsPagination.nodes
+          .filter((node) => node.id !== product.id)
+          .map((node) => (
+            <OwnedProducts product={node} key={node.id} />
+          ))}
+      </section>
     </div>
   );
 }

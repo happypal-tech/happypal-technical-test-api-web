@@ -1,0 +1,10 @@
+fragment OwnedProducts on User {
+    id
+    ownedProductsPagination {
+        totalCount
+        nodes {
+            id
+            ...ProductCard
+        }
+    }
+}

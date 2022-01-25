@@ -3,6 +3,8 @@ query ProductsIdView($productId: ID!) {
     id
     name
     description
+    priceCurrency
+    priceValue
     pictures {
       id
       hash # https://blurha.sh/
@@ -11,6 +13,12 @@ query ProductsIdView($productId: ID!) {
       originalName
       size
       url
+    }
+    owner {
+      id
+      firstName
+      lastName
+      ...OwnedProducts
     }
   }
 }
