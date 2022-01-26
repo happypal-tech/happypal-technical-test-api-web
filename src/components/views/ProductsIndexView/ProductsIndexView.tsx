@@ -25,7 +25,7 @@ export function ProductsIndexView() {
     <div>
       <div className={styles.cards}>
         {data.productsPagination.nodes.map((node) => (
-          <ProductCard product={node} key={node.id} />
+          <ProductCard product={node} key={`node_${node.id}`} />
         ))}
       </div>
     </div>
